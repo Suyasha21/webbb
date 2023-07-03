@@ -4,7 +4,7 @@ const router = express.Router();
 
 const usersController = require('../controllers/users_controller');
 
-
+// const User = require('../models/user');
 
 router.get('/profile', usersController.profile);
 
