@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/user').default;
 
 const bodyParser = require('body-parser');
 const usersController = require('../controllers/users_controller');
@@ -42,7 +42,7 @@ User.findOne({email:req.body.email}, function(err, user){
                 console.log('error in creating user while signing up');
                 return;
             }
-            return res.redirect('/');
+            return res.redirect('/users/sign-in');
         })
     }
         else{
@@ -54,26 +54,27 @@ User.findOne({email:req.body.email}, function(err, user){
 }
 
 // //get the signin data
+// module.exports.createSession=function(req, res){
+// //steps to autenticate
+// //find the user
+// User.findOne({email:req.body.email}, function(err, user){
+//     if(err){
+//         console.log('Error in finding user while signing in ');
+//         return ;
+//     }
+//     if(user){
+//        if(user.password!=req.body.password){
+//         return res.redirect('back');
+//        }
+//        res.cookie('user_id', user.id);
+//        return res.redirect('/profile');
+//     }
+//     else{
+//         //handle user not found
+//         return res.redirect('back');
+//     }
+// });
 module.exports.createSession=function(req, res){
-//steps to autenticate
-//find the user
-User.findOne({email:req.body.email}, function(err, user){
-    if(err){
-        console.log('Error in finding user while signing in ');
-        return ;
-    }
-    if(user){
-       if(user.password!=req.body.password){
-        return res.redirect('back');
-       }
-       res.cookie('user_id', user.id);
-       return res.redirect('/');
-    }
-    else{
-        //handle user not found
-        return res.redirect('back');
-    }
-});
-
-
+    return res.redirect('/');
 }
+

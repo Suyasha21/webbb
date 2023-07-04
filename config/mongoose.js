@@ -10,17 +10,17 @@
 // }
 
 
-const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://21btc062:suyasha21092003@cluster0.sjprm92.mongodb.net/project', {useNewUrlParser: true});
-const conn = mongoose.connection;
-conn.on('connected', function() {
+import { connect, connection } from 'mongoose';
+connect('mongodb+srv://21btc062:suyasha21092003@cluster0.sjprm92.mongodb.net/project', {useNewUrlParser: true});
+const conn = connection;
+ conn.on('connected', function() {
     console.log('database is connected successfully');
 });
 conn.on('disconnected',function(){
     console.log('database is disconnected successfully');
 })
 conn.on('error', console.error.bind(console, 'connection error:'));
-module.exports = conn;
+export default conn;
 
 
 // var mongoose = require('mongoose');
