@@ -39,4 +39,4 @@ deserializeUser(function(id, done){
         return done(null , user);
     });
 });
-export defaultpassport;
+export default passport;

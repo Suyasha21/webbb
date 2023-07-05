@@ -1,8 +1,8 @@
-const User = require('../models/user').default;
+import User from '../models/user';
 
-const bodyParser = require('body-parser');
-const usersController = require('../controllers/users_controller');
-module.exports.profile=function(req, res){
+import bodyParser from 'body-parser';
+import usersController from '../controllers/users_controller';
+export function profile(req, res){
     // return res.end('<h1>User Profile</h1>')
     return res.render('users',{
     title:"User"
@@ -10,7 +10,7 @@ module.exports.profile=function(req, res){
 }
 
 //render the SignUp page
-module.exports.signUp=function(req, res){
+export function signUp(req, res){
     return res.render('user_sign_up', {
         title:"Codeial | SignUp"
     })
@@ -18,7 +18,7 @@ module.exports.signUp=function(req, res){
 
 
 //render the SignIn page
-module.exports.signIn = function(req, res){
+export function signIn(req, res){
     return res.render('user_sign_in', {
         title:"Codeial | SignIn"
     })
@@ -26,7 +26,7 @@ module.exports.signIn = function(req, res){
 
 
 //get the signup data
-module.exports.create = function(req, res){
+export function create(req, res){
 if(req.body.password != req.body.confirm_password){
     return res.redirect('back');
 }
@@ -74,7 +74,7 @@ User.findOne({email:req.body.email}, function(err, user){
 //         return res.redirect('back');
 //     }
 // });
-module.exports.createSession=function(req, res){
+export function createSession(req, res){
     return res.redirect('/');
 }
 

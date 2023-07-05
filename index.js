@@ -1,17 +1,22 @@
 import express from 'express';
+
+
 import cookieParser from 'cookie-parser';
 
-import { urlencoded } from 'body-parser';
-   
-const app = express();
+import pkg from 'body-parser';
+const { urlencoded } = pkg;
+
+
+
 const port = 8000;
 import expressLayouts from 'express-ejs-layouts';
-import db from './config/mongoose';
-import session from 'express-session';
-import { initialize, session as _session } from 'passport';
-import passportLocal from './config/passport-local-strategy';
+// import db from './config/mongoose';
+// import session from 'express-session';
+// import { initialize, session as _session } from 'passport';
+// import passportLocal from './config/passport-local-strategy';
 //use express router
 
+const app= express();
 
 app.use(urlencoded({extended: true }));
 app.use(cookieParser());
